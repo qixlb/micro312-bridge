@@ -28,6 +28,16 @@
 #define ADDRESS_RAMP_LEVEL 0x41f8
 #define ADDRESS_RAMP_TIME 0x41f9
 
+//Modulators addresses
+#define ADDRESS_levela 0x40A5 
+#define ADDRESS_freqa 0x40AE 
+#define ADDRESS_widtha 0x40B7 
+#define ADDRESS_gatea 0x4090
+#define ADDRESS_levelb 0x41A5 
+#define ADDRESS_freqb 0x41AE 
+#define ADDRESS_widthb 0x41b7 
+#define ADDRESS_gateb 0x4190 
+
 
 // EEPROM addresses
 #define EEPROM_ADDRESS_POWER_LEVEL 0x8009
@@ -99,6 +109,16 @@ void mk312_set_a(int percent);
 void mk312_set_b(int percent);
 void mk312_set_ma(int percent);
 void mk312_set_mode(byte newmode);
+void mk312_set_la(int percent);
+void mk312_set_fa(int percent);
+void mk312_set_wa(int percent);
+void mk312_set_ga(int percent);
+void mk312_set_lb(int percent);
+void mk312_set_fb(int percent);
+void mk312_set_wb(int percent);
+void mk312_set_gb(int percent);
+void mk312_set_powerlevel(byte newmode);
+
 
 
 int mk312_get_a();
@@ -121,3 +141,37 @@ void init_mk312_easy();
 //void mk312_bruteforce_ramp();
 
 #endif //MK312_H
+
+//other addr from venerate
+#define ETMEM_knobmamin 0x4086
+#define ETMEM_knobmamax 0x4087
+#define ETMEM_timeona 0x4098
+#define ETMEM_timeoffa 0x4099
+#define ETMEM_timeopta 0x409A 
+#define ETMEM_ramp 0x4006 // 0-255 also ramp at 400b, 409c, 419c
+#define ETMEM_levelmina 0x40A6
+#define ETMEM_levelmaxa 0x40A7
+#define ETMEM_levelratea 0x40A8
+#define ETMEM_levelopta 0x40AB
+#define ETMEM_freqmaxa 0x40AF
+#define ETMEM_freqmina 0x40B0
+#define ETMEM_freqopta 0x40B5
+#define ETMEM_widthmina 0x40B8
+#define ETMEM_widthmaxa 0x40B9
+#define ETMEM_widthopta 0x40BE
+#define ETMEM_timeonb 0x4198
+#define ETMEM_timeoffb 0x4199
+#define ETMEM_timeoptb 0x419A
+#define ETMEM_levelminb 0x41A6
+#define ETMEM_levelmaxb 0x41A7
+#define ETMEM_levelrateb 0x41A8
+#define ETMEM_leveloptb 0x41AB
+#define ETMEM_freqmaxb 0x41AF
+#define ETMEM_freqminb 0x41B0
+#define ETMEM_freqoptb 0x41B5
+#define ETMEM_widthminb 0x41B8
+#define ETMEM_widthmaxb 0x41B9
+#define ETMEM_widthoptb 0x41BE
+#define ETMEM_powerlevel 0x41F4
+#define ETMEM_ramptime 0x41F9
+#define ETMEM_knobmaset 0x420d

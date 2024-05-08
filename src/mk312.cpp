@@ -247,20 +247,14 @@ void mk312_set_a(int percent)
 
 void mk312_set_b(int percent)
 {
-  if (!mk312_get_adc_disabled())
-  {
-    return;
-  }
+  //  if (!mk312_get_adc_disabled())  { return; }
   byte value = map(percent, 0, 99, 0, 255);
   mk312_write(ADDRESS_LEVELB, &value, 1);
 }
 
 void mk312_set_ma(int percent)
 {
-  if (!mk312_get_adc_disabled())
-  {
-    return;
-  }
+  //  if (!mk312_get_adc_disabled())  {  return; }
   byte ma_max;
   byte ma_min;
   byte value;
@@ -507,4 +501,66 @@ void mk312_dec_ma()
     ma--;
     mk312_set_ma(ma);
   }
+}
+
+void mk312_set_la(int percent)
+{
+  byte value = map(percent, 0, 99, 0, 255);
+  mk312_write(ADDRESS_levela, &value, 1);
+}
+
+void mk312_set_fa(int percent)
+{
+  byte value = map(percent, 0, 99, 0, 255);
+  mk312_write(ADDRESS_freqa, &value, 1);
+}
+
+void mk312_set_wa(int percent)
+{
+  byte value = map(percent, 0, 99, 0, 255);
+  mk312_write(ADDRESS_widtha, &value, 1);
+}
+
+void mk312_set_ga(int percent)
+{
+  byte value = map(percent, 0, 99, 0, 255);
+  mk312_write(ADDRESS_gatea, &value, 1);
+}
+
+void mk312_set_lb(int percent)
+{
+  byte value = map(percent, 0, 99, 0, 255);
+  mk312_write(ADDRESS_levelb, &value, 1);
+}
+
+void mk312_set_fb(int percent)
+{
+  byte value = map(percent, 0, 99, 0, 255);
+  mk312_write(ADDRESS_freqb, &value, 1);
+}
+
+void mk312_set_wb(int percent)
+{
+  byte value = map(percent, 0, 99, 0, 255);
+  mk312_write(ADDRESS_widthb, &value, 1);
+}
+
+void mk312_set_gb(int percent)
+{
+  byte value = map(percent, 0, 99, 0, 255);
+  mk312_write(ADDRESS_gateb, &value, 1);
+}
+
+void mk312_set_powerlevel(byte newmode)
+{
+  if (newmode == mk312_read(ADDRESS_POWER_LEVEL))
+  {
+    return;
+  }
+  if (newmode == POWERLEVEL_LOW || newmode == POWERLEVEL_NORMAL || newmode == POWERLEVEL_HIGH)
+  {
+    // Se newmode è valido, esegui la scrittura del nuovo livello di potenza
+    mk312_write(ADDRESS_POWER_LEVEL, &newmode, 1);
+  }
+  else return;
 }
